@@ -24,7 +24,7 @@
 #    class { 'openssh::server': }
 #
 #  In your hiera yaml config:
-#    openssh::client::ensure: 5.3p1-84.1 
+#    openssh::client::ensure: 5.3p1-84.1
 #    openssh::client::source: 'puppet:///files/openssh/sshd_std_config'
 #
 # === Authors
@@ -41,8 +41,8 @@ class openssh::server (
 ) inherits openssh {
   file { '/etc/ssh/sshd_config':
     source  => $source,
-    mode    => 0600,
-    owner   => root,
+    mode    => '0600',
+    owner   => 'root',
     notify  => Service[$openssh::params::service],
     require => Package[$openssh::params::server_package],
   }
@@ -55,6 +55,11 @@ class openssh::server (
     require => Package[$openssh::params::server_package],
   }
 
-  @@sshkey { $hostname: host_aliases => $ipaddress, type => rsa, key => $sshrsakey }
+  @@sshkey {
+    $::hostname: host_aliases => $::ipaddress,
+    type                      => 'rsa',
+    key                       => $::sshrsakey
+  }
+
   Sshkey <<| |>>
 }

@@ -24,7 +24,7 @@
 #    class { 'openssh::client': }
 #
 #  In your hiera yaml config:
-#    openssh::client::ensure: 5.3p1-84.1 
+#    openssh::client::ensure: 5.3p1-84.1
 #    openssh::client::source: 'puppet:///files/openssh/ssh_std_config'
 #
 # === Authors
@@ -44,7 +44,7 @@ class openssh::client (
   file { '/etc/ssh/ssh_config':
     source  => $source,
     owner   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     require => Package[$openssh::params::client_package],
   }
 }
