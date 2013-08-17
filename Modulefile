@@ -1,0 +1,8 @@
+name    'joejulian-openssh'
+version '0.1.0'
+source 'https://github.com/joejulian/joejulian-openssh'
+author 'Joe Julian <me@joejulian.name>'
+license 'Apache License, Version 2.0'
+summary 'openssh module'
+description 'Manage openssh client and server'
+project_page 'https://github.com/joejulian/joejulian-openssh'

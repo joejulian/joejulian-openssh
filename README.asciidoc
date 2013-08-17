@@ -1,0 +1,51 @@
+openssh
+
+The openssh module is used for installing and setting defaults for the
+openssh server and client.
+
+This module uses preconfigured files instead of augeas as I feel that
+the complete set of configuration options should be defined as part
+of a security model instead of taking an unknown set of options
+and only defining a specific subset.
+
+
+License
+-------
+GPLv3
+
+Contact
+-------
+Joe Julian <me@joejulian.name>
+
+Support
+-------
+
+Please log tickets and issues at http://github.com/joejulian/joejulian-openssh[github]
+
+Usage
+-----
+
+.Through a manifest only
+----------------------------------------------------------------------
+class { 'openssl::server': }
+
+class { 'openssh::client':
+  ensure => installed,
+  source => 'puppet:///files/mysshclientconfig',
+}
+
+----------------------------------------------------------------------
+
+Or with a hiera configuration
+
+.In a yaml configuration file
+----
+openssh::client::ensure: 5.3p1-84.1 
+openssh::client::source: 'puppet:///files/openssh/ssh_std_config'
+----
+
+.In your manifest, simply
+----
+class { 'openssh::server': }
+class { 'openssh::client': }
+----
