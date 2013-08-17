@@ -37,7 +37,7 @@
 #
 class openssh::server (
   $ensure = latest,
-  $source = 'puppet:///modules/openssh/sshd_config',
+  $source = 'puppet:///modules/openssh/sshd_config'
 ) inherits openssh {
   file { '/etc/ssh/sshd_config':
     source  => $source,
